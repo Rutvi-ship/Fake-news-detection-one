@@ -1,0 +1,53 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.joblib
+*.db
+
+# ===== Virtual Environments =====
+venv/
+.env/
+.venv/
+
+# ===== IDE & Editor =====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
+
+# ===== Streamlit =====
+.streamlit/secrets.toml
+
+# ===== Data & Models =====
+data/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.json
+*.sqlite
+*.h5
+*.hdf5
+*.bin
+
+# ===== Docker =====
+*.dockerfile
+docker-compose.override.yml
+
+# ===== Jupyter & Colab =====
+.ipynb_checkpoints/
+
+# ===== Build / Dist =====
+build/
+dist/
+*.egg-info/
