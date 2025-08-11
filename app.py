@@ -10,6 +10,8 @@ model = joblib.load("lr_model.joblib")
 #Displays a large title on the web app
 st.title("Fake News Detector")
 
+
+
 #Adds some instructional text 
 st.write("Enter a News Article below to check whether it is Fake or Real. ")
 
