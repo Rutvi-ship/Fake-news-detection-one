@@ -1,7 +1,7 @@
 
 import numpy as np
 from scipy.sparse import csr_matrix
-
+# ensures the data is in a compressed sparse row format 
 import streamlit as st
 import joblib
 
