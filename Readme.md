@@ -1,64 +1,114 @@
-#  Fake News Detection Project
-
 This project detects whether a news article is **Fake** or **Real** using Machine Learning and Natural Language Processing (NLP).
 
----
+Fake News Detection (Streamlit + Scikit-learn)
 
-##  Features
-- Preprocessing of text data using TF-IDF
-- Logistic Regression classifier
-- Streamlit-based user interface
-- Saved model and vectorizer using joblib
+Detect whether a news article is Real or Fake using a TF-IDF + Logistic Regression pipeline.
+Includes a Streamlit UI, explainability, test suite, and Dockerized deployment.
 
----
+====================================
 
-##  Project Structure
-├── app.py # Streamlit UI
-├── app.ipynb # Model training script
-├── vectorizer.joblib # Saved TF-IDF vectorizer
-├── lr_model.joblib # Trained Logistic Regression model
-├── README.md # Project documentation
+FEATURES
+====================================
 
-How It Works
-The Fake News Detection system uses Natural Language Processing (NLP) and Machine Learning to analyze news articles and determine whether they are fake or real.
+Text preprocessing + TF-IDF features
 
-Here’s how the pipeline works:
- 
- User Input (via Streamlit)
-The user enters a news article or snippet in a text box on the Streamlit web interface.
+Logistic Regression classifier
 
-Text Preprocessing (TF-IDF Vectorization):
-The entered text is transformed into numerical features using a pre-trained TF-IDF (Term Frequency–Inverse Document Frequency) vectorizer.
+Probability output + credibility score
 
- Prediction (Using Trained Model):
-The numerical features are passed to a trained Logistic Regression model that has learned from thousands of labeled fake and real news articles.
+Token-level explanation: words pushing toward Real vs Fake
 
-The model outputs a prediction:
+Streamlit UI (app.py)
 
-1 → Real News
-0 → Fake News
+Docker image for one-click run anywhere
 
-Output Display (Streamlit UI)
+Pytest tests for artifacts, predictions, and edge cases
 
-Based on the model’s prediction, the app shows:
-“The News is Real” (if prediction is 1)
-“The News is Fake” (if prediction is 0)
+Training/validation accuracy & loss graphs included in the report
 
- Models and Vectorizer Saved with Joblib
+====================================
+2. PROJECT STRUCTURE
+app.py -> Streamlit app
+requirements.txt -> Python dependencies
+vectorizer.joblib -> Saved TF-IDF vectorizer
+lr_model.joblib -> Saved Logistic Regression model
+Dockerfile -> Container build file
+tests/ -> Test cases (pytest)
 
-The trained model and vectorizer are saved as .joblib files and loaded instantly when the app runs.
+Make sure vectorizer.joblib and lr_model.joblib are in the project root.
 
-Run the App:
+====================================
+3. REQUIREMENTS (Local Development)
+Python 3.11
 
-streamlit run app.py
+pip, virtualenv (or venv)
 
+(Optional) Git, VS Code
 
-Results:
-Accuracy: 99%
+(For containers) Docker Desktop (Windows/macOS) or Docker Engine (Linux)
 
+====================================
+4. RUN LOCALLY (Without Docker)
+Create & activate a virtual environment
+python -m venv venv
+On Windows PowerShell: .\venv\Scripts\Activate.ps1
+On macOS/Linux: source venv/bin/activate
 
-Dataset
-Used the Fake News Dataset from Kaggle.
+Install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
 
+Run the app
+streamlit run app.py --server.port 8501
 
+Open: http://localhost:8501
+
+====================================
+5. RUN TESTS
+pip install pytest
+pytest -q
+
+====================================
+6. RUN WITH DOCKER
+Build the image
+docker build -t fake-news-app:latest .
+
+Run the container
+docker run --rm -p 8501:8501 fake-news-app:latest
+
+Open: http://localhost:8501
+
+====================================
+7. TROUBLESHOOTING
+Docker errors about connection or missing pipe: make sure Docker Desktop is running and WSL backend is active.
+
+Input/output error during build: free disk space and clear Docker cache.
+
+NumPy / scikit-learn errors: activate correct venv and reinstall dependencies.
+
+Missing model artifacts: ensure vectorizer.joblib and lr_model.joblib are in the root folder.
+
+====================================
+8. HOW IT WORKS
+Preprocess text (lowercase, remove punctuation/extra spaces, remove stopwords)
+
+TF-IDF transforms text to sparse features
+
+Logistic Regression outputs class probabilities
+
+Credibility score shown with token-level explanation
+
+====================================
+9. SUBMISSION CHECKLIST
+app.py runs locally and in Docker
+
+vectorizer.joblib & lr_model.joblib included
+
+requirements.txt installs cleanly
+
+Tests pass with pytest
+
+Screenshots and graphs added to report
+
+README.txt updated with instructions
 
